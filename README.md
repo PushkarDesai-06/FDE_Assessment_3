@@ -1,5 +1,49 @@
-# FDE Assessment 3 Starter Pack
-## AI Procurement Request Copilot
+# AI Procurement Request Copilot
+
+For each purchase request, the copilot gathers evidence with tools, applies the procurement policy in **code**, uses an **LLM** for the judgement calls, and routes the decision to **humans**. It never approves anything itself.
+
+## Run it (one command)
+
+```bash
+python -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+cp .env.example .env          # then set GROQ_API_KEYS=key1,key2,... (or a single GROQ_API_KEY)
+python run_local.py           # mock vendor API on :8001 + UI on http://127.0.0.1:8501
+```
+
+Without a key, the app still runs: it returns the deterministic rules-only decision and flags `ai_assessment_unavailable`.
+
+## Evaluate both architectures
+
+```bash
+python evals/compare_architectures.py            # 6 public + 7 extended cases; rules_only, single, staged
+python evals/run_public_evals.py --architecture single   # starter harness (start the mock API first)
+python evals/run_public_evals.py --architecture staged
+python -m unittest discover -s tests             # deterministic tests, no key or API needed
+```
+
+The comparison script starts the mock API itself if it isn't running. It writes [evals/results/comparison_summary.md](evals/results/comparison_summary.md) and `comparison_runs.csv`.
+
+## What's where
+
+| | |
+|---|---|
+| Decision memo | [docs/ARCHITECTURE_DECISION.md](docs/ARCHITECTURE_DECISION.md) |
+| Architecture, workflow diagrams, assumptions | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) |
+| Adapter | `src/solution.py` -> `handle_request(request_id, architecture)` |
+| Orchestration and guardrail merge | `src/copilot.py` |
+| Agents A (`single`) and B (`staged`) | `src/agents.py` |
+| Tools (5, all deterministic) | `src/tools.py`, backed by `src/facts.py` |
+| Policy rules engine | `src/policy_engine.py` |
+| LLM client (Groq `openai/gpt-oss-120b` via the OpenAI SDK) | `src/llm.py` |
+| Round-robin API key pool (rotates per request, rests rate-limited keys) | `src/api_keys.py` |
+| Extended eval cases (hidden-style records) | `evals/extended_cases.json` |
+
+**Design rule:** code computes the minimum approvals, mandatory flags and missing information. The model can add to these and make the route stricter, but it can never remove anything. Evidence items are generated from tool outputs, and `human_review_required` is always true.
+
+---
+
+# Starter pack reference (original instructions)
 
 This repository contains the **starter data, mock service, interface contract, optional UI scaffold, and public evaluation harness** for Assessment 3.
 

@@ -1,0 +1,27 @@
+case_id,architecture,correct_next_action,grounded_evidence,policy_followed,human_escalation_correct,latency_ms,llm_calls,tool_calls,notes
+PUB-01,single,True,True,True,True,5345,5.5,5.0,2 reps; active latency (excl. rate-limit wait); route=CONSIDER_EXISTING_TOOL; agent skipped a tool in 2 rep(s); guardrail ran it
+PUB-02,single,True,True,True,True,5845,6.0,5.0,2 reps; active latency (excl. rate-limit wait); route=ROUTE_FOR_SPECIALIST_REVIEW
+PUB-03,single,True,True,True,True,5445,5.5,5.0,2 reps; active latency (excl. rate-limit wait); route=ROUTE_FOR_SPECIALIST_REVIEW; agent skipped a tool in 1 rep(s); guardrail ran it
+PUB-04,single,True,True,True,True,7140,6.0,5.0,2 reps; active latency (excl. rate-limit wait); route=ROUTE_FOR_SPECIALIST_REVIEW
+PUB-05,single,True,True,True,True,5170,6.0,5.0,2 reps; active latency (excl. rate-limit wait); route=REQUEST_CLARIFICATION
+PUB-06,single,True,True,True,True,6145,6.0,5.0,2 reps; active latency (excl. rate-limit wait); route=ESCALATE_MANUAL_REVIEW
+EXT-01,single,True,True,True,True,5730,6.0,5.0,2 reps; active latency (excl. rate-limit wait); route=ROUTE_FOR_SPECIALIST_REVIEW
+EXT-02,single,True,True,True,True,5585,6.0,5.0,2 reps; active latency (excl. rate-limit wait); route=ESCALATE_MANUAL_REVIEW
+EXT-03,single,True,True,True,True,4415,6.0,5.0,2 reps; active latency (excl. rate-limit wait); route=CONSIDER_EXISTING_TOOL
+EXT-04,single,True,True,True,True,5050,6.0,5.0,2 reps; active latency (excl. rate-limit wait); route=ROUTE_FOR_BUSINESS_APPROVAL
+SYN-01,single,True,True,True,True,5340,6.0,5.0,2 reps; active latency (excl. rate-limit wait); route=ROUTE_FOR_BUSINESS_APPROVAL
+SYN-02,single,True,True,True,True,8075,6.0,5.0,2 reps; active latency (excl. rate-limit wait); route=REQUEST_CLARIFICATION
+SYN-03,single,True,True,True,True,6060,7.0,6.0,2 reps; active latency (excl. rate-limit wait); route=ROUTE_FOR_SPECIALIST_REVIEW
+PUB-01,staged,True,True,True,True,5215,6.0,5.0,2 reps; active latency (excl. rate-limit wait); route=CONSIDER_EXISTING_TOOL
+PUB-02,staged,True,True,True,True,7160,6.0,5.0,2 reps; active latency (excl. rate-limit wait); route=ROUTE_FOR_SPECIALIST_REVIEW
+PUB-03,staged,True,True,True,True,7305,6.5,5.0,2 reps; active latency (excl. rate-limit wait); route=ROUTE_FOR_SPECIALIST_REVIEW
+PUB-04,staged,True,True,True,True,6065,6.0,5.0,2 reps; active latency (excl. rate-limit wait); route=ROUTE_FOR_SPECIALIST_REVIEW
+PUB-05,staged,True,True,True,True,7320,6.0,5.0,2 reps; active latency (excl. rate-limit wait); route=REQUEST_CLARIFICATION
+PUB-06,staged,True,True,True,True,6640,6.0,5.0,2 reps; active latency (excl. rate-limit wait); route=ESCALATE_MANUAL_REVIEW; model proposed looser route in 1 rep(s); code floor kept ESCALATE_MANUAL_REVIEW
+EXT-01,staged,True,True,True,True,7705,6.5,5.0,2 reps; active latency (excl. rate-limit wait); route=ROUTE_FOR_SPECIALIST_REVIEW
+EXT-02,staged,True,True,True,True,6915,6.0,5.0,2 reps; active latency (excl. rate-limit wait); route=ESCALATE_MANUAL_REVIEW; model proposed looser route in 1 rep(s); code floor kept ESCALATE_MANUAL_REVIEW
+EXT-03,staged,True,True,True,True,7745,7.5,5.0,2 reps; active latency (excl. rate-limit wait); route=CONSIDER_EXISTING_TOOL
+EXT-04,staged,True,True,True,True,5850,6.0,5.0,2 reps; active latency (excl. rate-limit wait); route=ROUTE_FOR_BUSINESS_APPROVAL
+SYN-01,staged,True,True,True,True,6980,6.0,5.0,2 reps; active latency (excl. rate-limit wait); route=ROUTE_FOR_BUSINESS_APPROVAL
+SYN-02,staged,True,True,True,True,10805,6.5,5.0,2 reps; active latency (excl. rate-limit wait); route=REQUEST_CLARIFICATION
+SYN-03,staged,True,True,True,True,12415,9.0,6.0,2 reps; active latency (excl. rate-limit wait); route=ROUTE_FOR_SPECIALIST_REVIEW

@@ -17,6 +17,7 @@ REQUIRED_MODULES = [
     "dotenv",
     "streamlit",
     "httpx",
+    "openai",
 ]
 
 
